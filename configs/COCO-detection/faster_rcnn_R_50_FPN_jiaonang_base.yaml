@@ -1,0 +1,26 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+MODEL:
+  #train resume weights dir
+  WEIGHTS: "F:/workspace/Daheng/Deep-learning-library/few-shot-object-detection-master/checkpoints/R-50.pkl"
+
+  #test weights dir
+  #WEIGHTS: "F:/workspace/Daheng/Deep-learning-library/few-shot-object-detection-master/checkpoints/coco/faster_rcnn/faster_rcnn_R_50_FPN_base_custom/model_final.pth"
+  MASK_ON: False
+  #  RETINANET:
+  #    SCORE_THRESH_TEST: 0.5
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    NUM_CLASSES: 3
+    #SCORE_THRESH_TEST: 0.5
+DATASETS:
+  TRAIN: ('jiaonang_train_base',)
+  TEST: ('test_base',)
+SOLVER:
+  IMS_PER_BATCH: 2
+  STEPS: (2000, 8000)
+  MAX_ITER: 10000
+  BASE_LR: 0.02
+  WARMUP_ITERS: 1000
+OUTPUT_DIR: "F:/workspace/Daheng/Deep-learning-library/few-shot-object-detection-master/checkpoints/coco/faster_rcnn/faster_rcnn_R_50_FPN_jiaonang_base"
+#OUTPUT_WEIGHTS: "F:/workspace/Daheng/Deep-learning-library/few-shot-object-detection-master/checkpoints/coco/faster_rcnn/faster_rcnn_R_50_FPN_base_custom/model_final.pth"
